@@ -2,3 +2,6 @@ __pycache__/
 env/
 api.json
 output/
+font/
+test.py
+clip/
