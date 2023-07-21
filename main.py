@@ -16,7 +16,7 @@ class VideoProcessor:
         try:
             create_folder_if_not_exists(self.id)
             get_chat(self.id)
-            dl_video(self.id)
+            dl_video(self.id) 
         except Exception as e:
             raise Exception(f"Failed to prepare video {self.id}. Reason: {str(e)}")
 
@@ -43,5 +43,5 @@ def main(video_id: str):
     processor.process_top_comments()
 
 if __name__ == "__main__":
-    video_id = "LshIhcPr0dk"
+    video_id = "id"
     main(video_id)
