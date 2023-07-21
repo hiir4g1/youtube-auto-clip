@@ -8,6 +8,9 @@ def analyze_kusa_comments(id):
     # Convert the "Timestamp" column to datetime type
     df['Timestamp'] = pd.to_datetime(df['Timestamp'])
 
+    # Fill NaN values in "Comment" column
+    df['Comment'] = df['Comment'].fillna('')
+
     # Filter the DataFrame for comments containing "草"
     kusa_comments = df[df['Comment'].str.contains('草', case=False)]  # Case-insensitive match
 
