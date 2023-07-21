@@ -1,4 +1,4 @@
-from tests import create_folder_if_not_exists, dl_video, get_chat, analyze_kusa_comments, YouTubeVideoTime, CreateClipVideo
+from YoutubeAutoClip import create_folder_if_not_exists, dl_video, get_chat, analyze_kusa_comments, YouTubeVideoTime, CreateClipVideo
 
 class VideoProcessor:
     def __init__(self, video_id: str):
@@ -43,5 +43,5 @@ def main(video_id: str):
     processor.process_top_comments()
 
 if __name__ == "__main__":
-    video_id = "id"
+    video_id = "8dwtgKiSYf4"
     main(video_id)
