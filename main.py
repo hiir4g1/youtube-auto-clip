@@ -23,8 +23,8 @@ class VideoProcessor:
         
     def upload_video(self,i):
         image_path = f"./input/background/{self.channel_id}/1.png"
-        video_path = f"./clip/{self.id}/{self.id}-{i}.mp4"
-        output_path = f"./clip/{self.id}/{self.id}-{i}-upload.mp4"
+        video_path = f"./clip/{self.id}/{self.id}-{i+1}.mp4"
+        output_path = f"./clip/{self.id}/{self.id}-{i+1}-upload.mp4"
         create_upload_video(image_path,video_path,output_path)
 
     def process_top_comments(self):
@@ -38,11 +38,11 @@ class VideoProcessor:
                 self.create_clip.cut_video(start_time)
         except Exception as e:
             raise Exception(f"Failed to process top comments for video {self.id}. Reason: {str(e)}")
-        try:
-            for i in len(top_5_minutes_list):
-                self.upload_video(i)
-        except Exception as e:
-            raise Exception(f"Failed to process clip for video {self.id}. Reason: {str(e)}")
+        # try:
+        #     for i in range(len(top_5_minutes_list)):
+        #         self.upload_video(i)
+        # except Exception as e:
+        #     raise Exception(f"Failed to process clip for video {self.id}. Reason: {str(e)}")
         
     
         
@@ -58,5 +58,5 @@ def main(video_id: str):
     processor.process_top_comments()
 
 if __name__ == "__main__":
-    video_id = "8dwtgKiSYf4"
+    video_id = "LshIhcPr0dk"
     main(video_id)

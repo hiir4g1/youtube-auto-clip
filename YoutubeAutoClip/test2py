@@ -1,0 +1,39 @@
+from moviepy.editor import *
+
+def embed_video_on_image(video_path, image_path, output_path):
+    # 動画ファイルの読み込み
+    clip = VideoFileClip(video_path)
+
+    # 背景画像の読み込み
+    bg_image = ImageClip(image_path, duration=clip.duration)
+
+    # 背景画像のサイズを取得
+    bg_width, bg_height = bg_image.size
+
+    # 動画のサイズを取得
+    clip_width, clip_height = clip.size
+
+    # 動画を中央に配置するための位置を計算
+    pos_left = (bg_width - clip_width) / 2
+    pos_top = (bg_height - clip_height) / 2
+
+    # 背景画像の上に動画を重ねる
+    final_clip = CompositeVideoClip([bg_image, clip.set_position((pos_left, pos_top))])
+
+    # 結果の動画を出力
+    final_clip.write_videofile(output_path,
+        codec='libx264', 
+        audio_codec='aac', 
+        remove_temp=True
+    )
+    
+
+
+id = 'LshIhcPr0dk'
+i = 1
+channel_id = 'UCCzUftO8KOVkV4wQG1vkUvg'
+image_path = f"./input/background/{channel_id}/1.png"
+video_path = f"./clip/{id}/{id}-{i}.mp4"
+output_path = f"./clip/{id}/{id}-{i}-upload.mp4"
+
+embed_video_on_image(video_path, image_path, output_path)
